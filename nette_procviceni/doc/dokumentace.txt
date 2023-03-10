@@ -1,0 +1,46 @@
+-------------------------user_controller.php
+Třída UserController rozšiřuje třídu BasePresenter a zajišťuje správu uživatelů. V konstruktoru třídy je definován privátní atribut $userManager typu UserManager, který bude používán pro práci s uživateli.
+
+Metoda createComponentUserForm() vytváří formulář pro vytváření nového uživatele. Formulář obsahuje tři pole - pro e-mail, heslo a roli uživatele. Každé pole má nastavené požadavky na vyplnění a omezení na minimální délku hesla.
+
+Metoda processUserForm() zpracovává data z formuláře a vytváří nového uživatele. Poté, co je uživatel úspěšně vytvořen, je zobrazena zpráva o úspěšném vytvoření a uživatel je přesměrován na výchozí stránku.
+
+Třída UserController je závislá na třídě UserManager, která se používá pro práci s uživateli. Metoda createComponentUserForm() vytváří instanci třídy Form pro vytvoření formuláře a metoda processUserForm() vytváří novou instanci třídy User.
+
+
+-------------------------blog_model.php
+
+Třída BlogModel je model v aplikaci pro práci s databází. Obsahuje metody pro získání uživatelů a článků, vytváření, úpravu a mazání článků a komentářů.
+
+Metoda getUserByEmail() získává uživatele z databáze podle e-mailové adresy.
+
+Metoda getUserById() získává uživatele z databáze podle ID.
+
+Metoda getArticles() získává články z databáze seřazené podle data vytvoření.
+
+Metoda getArticleById() získává článek z databáze podle ID.
+
+Metoda createArticle() vytváří nový článek v databázi.
+
+Metoda updateArticle() aktualizuje existující článek v databázi.
+
+Metoda deleteArticle() maže článek z databáze.
+
+Metoda getCommentsForArticle() získává komentáře k článku z databáze seřazené podle data vytvoření.
+
+Metoda createComment() vytváří nový komentář k článku v databázi.
+
+Konstruktor třídy přijímá objekt Context, který slouží k práci s databází.
+
+-------------------------presenter.php
+
+Třída ArticlePresenter se stará o zpracování požadavků na zobrazení článků a detailů článků.
+
+Metoda renderDefault()
+Metoda renderDefault() se stará o zobrazení seznamu všech publikovaných článků. Metoda nebere žádné parametry a vrací výpis článků do proměnné $articles v šabloně.
+
+Metoda renderDetail($id)
+Metoda renderDetail($id) zobrazuje detail konkrétního článku. Metoda očekává parametr $id, který určuje identifikátor článku. Pokud článek s daným identifikátorem neexistuje, metoda zobrazí chybovou stránku. Pokud existuje, načte článek z databáze a předá ho do proměnné $article v šabloně.
+
+Konstruktor
+Konstruktor třídy přijímá instanci třídy ArticleManager, která slouží k práci s články. Instanci ukládá do privátní vlastnosti $articleManager.
